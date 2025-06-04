@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisador de Exames Responsivo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Analisador de Exames</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <!-- Coluna de Dados Pessoais e Seleção de Exames -->
+            <div class="col col-left no-print">
+                <div class="card">
+                    <h2>Dados Pessoais</h2>
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" placeholder="Nome Completo">
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="age">Idade</label>
+                                <input type="number" id="age" placeholder="Idade">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="gender">Sexo</label>
+                                <select id="gender">
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Feminino</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Selecionar Exames</h2>
+                    <div class="form-group">
+                        <input type="text" id="exam-search" placeholder="Buscar exame...">
+                    </div>
+                    <div id="exam-categories">
+                        <!-- Categorias serão renderizadas aqui pelo JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coluna de Exames Adicionados e Relatório -->
+            <div class="col col-right">
+                <div class="card no-print">
+                    <h2>Exames Adicionados</h2>
+                    <div class="table-responsive">
+                        <table class="table" id="exams-table">
+                            <thead>
+                                <tr>
+                                    <th>Exame</th>
+                                    <th>Valor</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="exams-table-body">
+                                <!-- Linhas de exame serão adicionadas aqui -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="margin-top: 15px; text-align: right;">
+                        <button onclick="generateReport()">Gerar Relatório</button>
+                        <button class="btn-danger" onclick="clearAllExams()">Limpar Tudo</button>
+                    </div>
+                </div>
+
+                <!-- Seção do Relatório (inicialmente oculta) -->
+                <div id="report-section" style="display: none;">
+                    <div class="card">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <h2>Relatório de Exames</h2>
+                            <button class="no-print" onclick="window.print()" style="margin-left: auto;">Imprimir Relatório</button>
+                        </div>
+                        <hr style="margin: 1rem 0;">
+                        <div id="report-patient-info">
+                            <!-- Informações do paciente serão inseridas aqui -->
+                        </div>
+                        <div id="report-content">
+                            <!-- Conteúdo do relatório será inserido aqui -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para entrada de valor em dispositivos móveis -->
+    <div id="value-modal" class="modal no-print">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 id="modal-title">Adicionar/Editar Valor</h3>
+            <div id="modal-exam-info" style="margin-bottom: 1rem;">
+                <p id="modal-exam-name"></p>
+                <p id="modal-exam-ref"></p>
+                <p id="modal-exam-ideal"></p>
+                <p id="modal-exam-notes" style="display: none;"></p>
+            </div>
+            <div class="form-group">
+                <label for="modal-exam-value">Valor</label>
+                <div style="display: flex;">
+                    <input type="number" id="modal-exam-value" placeholder="Valor" step="any" style="flex: 1; border-radius: 4px 0 0 4px;">
+                    <span id="modal-exam-unit" style="padding: 0.6rem 0.8rem; background: #e9ecef; border: 1px solid #ced4da; border-left: none; border-radius: 0 4px 4px 0;"></span>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-danger" onclick="closeModal()">Cancelar</button>
+                <button onclick="saveValueFromModal()">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

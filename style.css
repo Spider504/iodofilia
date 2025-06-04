@@ -1,0 +1,395 @@
+/* Reset básico e estilos globais */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.6;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+.header {
+    background-color: #1a5276;
+    color: white;
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
+}
+.header h1 {
+    text-align: center;
+    font-size: 1.8rem;
+}
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -0.75rem; /* Espaçamento entre colunas */
+}
+.col {
+    flex: 1;
+    padding: 0.75rem;
+    min-width: 280px; /* Largura mínima para evitar esmagamento */
+}
+/* Coluna esquerda (dados e seleção) e direita (tabela e relatório) */
+.col-left {
+    flex-basis: 40%; /* Um pouco menor */
+}
+.col-right {
+    flex-basis: 60%; /* Um pouco maior */
+}
+.form-group {
+    margin-bottom: 1rem;
+}
+label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+    color: #495057;
+}
+input[type="text"], input[type="number"], select {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+input[type="text"]:focus, input[type="number"]:focus, select:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.15s ease-in-out;
+    margin-left: 0.5rem; /* Espaçamento entre botões */
+}
+button:hover {
+    background-color: #0056b3;
+}
+.btn-danger {
+    background-color: #dc3545;
+}
+.btn-danger:hover {
+    background-color: #c82333;
+}
+.table-responsive {
+    overflow-x: auto; /* Permite rolagem horizontal se necessário */
+}
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+.table th, .table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #dee2e6;
+    text-align: left;
+    vertical-align: middle;
+}
+.table th {
+    background-color: #e9ecef;
+    font-weight: 600;
+}
+.table tbody tr:hover {
+    background-color: #f1f3f5;
+}
+.category {
+    cursor: pointer;
+    padding: 0.8rem;
+    background-color: #e9ecef;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.15s ease-in-out;
+}
+.category:hover {
+    background-color: #ced4da;
+}
+.exam-list {
+    display: none;
+    padding-left: 1.5rem;
+    border-left: 2px solid #ced4da;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.exam-item {
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.15s ease-in-out;
+}
+.exam-item:hover {
+    background-color: #e9ecef;
+}
+.badge {
+    display: inline-block;
+    padding: 0.3em 0.6em;
+    border-radius: 10rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+}
+.badge-normal {
+    background-color: #d4edda;
+    color: #155724;
+}
+.badge-warning {
+    background-color: #fff3cd;
+    color: #856404;
+}
+.badge-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+.badge-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+.report-section {
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background-color: #fff;
+}
+.report-section h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #007bff;
+    color: #007bff;
+}
+#report-patient-info p {
+    margin-bottom: 0.5rem;
+}
+
+/* Estilos Responsivos Melhorados */
+@media (max-width: 992px) {
+    .col-left, .col-right {
+        flex-basis: 50%; /* Colunas dividem meio a meio */
+    }
+}
+@media (max-width: 768px) {
+    .col-left, .col-right {
+        flex-basis: 100%; /* Colunas empilham */
+    }
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    .card {
+        padding: 1rem;
+    }
+    /* Tabela responsiva */
+    .table thead {
+        display: none;
+    }
+    .table, .table tbody, .table tr, .table td {
+        display: block;
+        width: 100%;
+    }
+    .table tr {
+        margin-bottom: 1rem;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        padding: 0.8rem;
+        background-color: #fff;
+    }
+    .table td {
+        text-align: right;
+        padding-left: 45%; /* Espaço para o label */
+        position: relative;
+        border-bottom: none;
+        display: flex; /* Alinha input e unidade */
+        justify-content: flex-end;
+        align-items: center;
+        min-height: 38px; /* Altura mínima */
+    }
+    .table td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 40%;
+        text-align: left;
+        font-weight: 600;
+        color: #495057;
+    }
+    /* Ajuste específico para a célula de valor */
+    .table td[data-label="Valor"] {
+        flex-direction: column; /* Empilha input, ref, ideal */
+        align-items: flex-end;
+    }
+    .table td[data-label="Valor"] input {
+        width: auto; /* Ajusta largura do input */
+        max-width: 100px; /* Limita largura */
+        margin-bottom: 5px;
+        text-align: right;
+    }
+    .table td[data-label="Valor"] span {
+         margin-left: 5px;
+    }
+    .table td[data-label="Valor"] div, .table td[data-label="Valor"] small {
+        font-size: 0.8rem;
+        color: #6c757d;
+        width: 100%;
+        text-align: right;
+    }
+    .table td[data-label="Ações"] button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Modal para mobile */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+.modal-content {
+    background-color: white;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #6c757d;
+    line-height: 1;
+}
+.close:hover {
+    color: #343a40;
+}
+#modal-exam-info p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #495057;
+}
+#modal-exam-info p:first-child {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #343a40;
+    margin-bottom: 1rem;
+}
+#modal-exam-notes {
+    font-style: italic;
+    color: #6c757d;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+.modal-actions {
+    text-align: right;
+    margin-top: 1.5rem;
+}
+
+/* Estilos para impressão */
+@media print {
+    body {
+        background-color: #fff;
+    }
+    .container {
+        width: 100%;
+        max-width: none;
+        padding: 0;
+    }
+    .no-print, .header, .col-left, .card:not(#report-section .card) {
+        display: none !important;
+    }
+    #report-section, #report-section * {
+        visibility: visible;
+    }
+    #report-section {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        border: none;
+        margin: 0;
+        padding: 0;
+    }
+    .card {
+         box-shadow: none;
+         border: none;
+         padding: 0;
+         margin: 0;
+    }
+    .table th, .table td {
+        border: 1px solid #dee2e6 !important; /* Adiciona bordas na impressão */
+        padding: 0.5rem;
+        font-size: 10pt;
+    }
+    .table th {
+        background-color: #e9ecef !important;
+        -webkit-print-color-adjust: exact; /* Garante cor de fundo no Chrome */
+        color-adjust: exact; /* Garante cor de fundo */
+    }
+    .badge {
+        border: 1px solid;
+        padding: 0.2em 0.4em;
+        font-size: 9pt;
+    }
+    /* Garante cores dos badges na impressão */
+    .badge-normal {
+        background-color: #d4edda !important; color: #155724 !important; border-color: #155724 !important;
+        -webkit-print-color-adjust: exact; color-adjust: exact;
+    }
+    .badge-warning {
+        background-color: #fff3cd !important; color: #856404 !important; border-color: #856404 !important;
+        -webkit-print-color-adjust: exact; color-adjust: exact;
+    }
+    .badge-danger {
+        background-color: #f8d7da !important; color: #721c24 !important; border-color: #721c24 !important;
+        -webkit-print-color-adjust: exact; color-adjust: exact;
+    }
+    .badge-info {
+        background-color: #d1ecf1 !important; color: #0c5460 !important; border-color: #0c5460 !important;
+        -webkit-print-color-adjust: exact; color-adjust: exact;
+    }
+    h2, h3 {
+        font-size: 14pt;
+    }
+    p, small {
+        font-size: 10pt;
+    }
+}
+
