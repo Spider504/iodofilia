@@ -51,4 +51,5 @@ O projeto está organizado da seguinte forma:
 *   Os valores de referência e ideais foram baseados no documento "Valores Ideais de Exames" fornecido. É crucial que estes valores sejam revisados e validados por profissionais de saúde qualificados.
 *   Esta ferramenta é para fins informativos e educacionais, **não substituindo** a avaliação e o diagnóstico médico profissional.
 *   Em caso de problemas com dados salvos (ex: seleção de sexo fixa), limpe o `localStorage` do navegador para esta aplicação (instruções podem ser fornecidas se necessário).
+ ##vamos testar##
 
